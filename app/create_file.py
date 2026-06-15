@@ -21,10 +21,15 @@ def main() -> None:
     if directory:
         os.makedirs(directory, exist_ok=True)
 
+    if f_index is None:
+        return
+
     filename = "file.txt"
-    if f_index is not None and f_index + 1 < len(args):
+    if f_index + 1 < len(args):
         if args[f_index + 1] != "-d":
             filename = args[f_index + 1]
+        elif f_index > 0 and args[f_index - 1] != "-d":
+            filename = args[f_index - 1]
 
     full_path = os.path.join(directory, filename) if directory else filename
 
@@ -44,5 +49,4 @@ def main() -> None:
         f.write(content)
 
 
-if __name__ == "__main__":
-    main()
+main()
