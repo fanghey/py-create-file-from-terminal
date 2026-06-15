@@ -63,7 +63,7 @@ while True:
 # ---------------------------
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-formatted_lines = [f"{i+1} {line}" for i, line in enumerate(lines)]
+formatted_lines = [f"{i + 1} {line}" for i, line in enumerate(lines)]
 
 content = f"{timestamp}\n" + "\n".join(formatted_lines) + "\n\n"
 
