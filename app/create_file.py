@@ -41,11 +41,15 @@ def main() -> None:
         lines.append(text)
 
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    formatted_lines = [f"{i + 1} {line}" for i, line in enumerate(lines)]
+    formatted_lines = [f"{i + 1} {line}\n" for i, line in enumerate(lines)]
+    
+    content = timestamp + "\n" + "".join(formatted_lines)
 
-    content = timestamp + "".join(formatted_lines)
+    file_exists = os.path.exists(full_path) and os.path.getsize(full_path) > 0
 
     with open(full_path, "a", encoding="utf-8") as f:
+        if file_exists:
+            f.write("\n")
         f.write(content)
 
 
