@@ -6,11 +6,9 @@ from datetime import datetime
 def main() -> None:
     args = sys.argv
 
-    # -------------------- flags --------------------
     d_index = args.index("-d") if "-d" in args else None
     f_index = args.index("-f") if "-f" in args else None
 
-    # -------------------- directory parts --------------------
     if d_index is not None:
         if f_index is not None and f_index > d_index:
             dir_parts = args[d_index + 1:f_index]
@@ -24,7 +22,6 @@ def main() -> None:
     if directory:
         os.makedirs(directory, exist_ok=True)
 
-    # -------------------- filename --------------------
     if f_index is not None and f_index + 1 < len(args):
         filename = args[f_index + 1]
     else:
@@ -32,7 +29,6 @@ def main() -> None:
 
     full_path = os.path.join(directory, filename) if directory else filename
 
-    # -------------------- input --------------------
     lines = []
 
     while True:
@@ -42,15 +38,13 @@ def main() -> None:
             break
 
         lines.append(text)
-
-    # -------------------- formatting --------------------
+        
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     formatted_lines = [f"{i + 1} {line}" for i, line in enumerate(lines)]
 
     content = timestamp + "\n" + "\n".join(formatted_lines) + "\n"
 
-    # -------------------- write file --------------------
     with open(full_path, "a", encoding="utf-8") as f:
         f.write(content)
 
