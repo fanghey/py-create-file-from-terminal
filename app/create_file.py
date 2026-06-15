@@ -47,10 +47,10 @@ def main() -> None:
 
     file_exists = os.path.exists(full_path) and os.path.getsize(full_path) > 0
 
-    with open(full_path, "a", encoding="utf-8") as f:
+    with open(full_path, "a", encoding="utf-8") as output_file:
         if file_exists:
-            f.write("\n")
-        f.write(content)
+            output_file.write("\n")
+        output_file.write(content)
 
 
 main()
