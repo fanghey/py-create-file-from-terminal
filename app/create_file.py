@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 
-def main():
+def main() ->
     args = sys.argv
 
     # -------------------------
